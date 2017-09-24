@@ -1,0 +1,9 @@
+---
+title: ""
+output:
+  html_document:
+    theme: flatly
+---
+
+[2016 Introduction to R](https://clelandcm.github.io/Hands-On-R-Practice/Introduction-to-R-Slides-27October2016.html)
+
