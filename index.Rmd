@@ -1,9 +1,15 @@
 ---
-title: ""
+title: "Hands-On R Practice"
+author: "Chuck Cleland"
+date: '`r format(Sys.time(), "%B %d, %Y %r %Z")`'
 output:
   html_document:
+    highlight: tango
     theme: flatly
+    toc: no
 ---
 
-[2016 Introduction to R](https://clelandcm.github.io/Hands-On-R-Practice/Introduction-to-R-Slides-27October2016.html)
+# Files 
 
+* [2016 Introduction to R](https://clelandcm.github.io/Hands-On-R-Practice/Introduction-to-R-Slides-27October2016.html)
+* [2016 Introduction to R Handouts](https://clelandcm.github.io/Hands-On-R-Practice/Introduction-to-R-Handout-27October2016.html) 
