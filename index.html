@@ -146,7 +146,7 @@ $(document).ready(function () {
 
 <h1 class="title toc-ignore">Hands-On R Practice</h1>
 <h4 class="author"><em>Chuck Cleland</em></h4>
-<h4 class="date"><em>September 24, 2017 04:02:25 PM EDT</em></h4>
+<h4 class="date"><em>October 16, 2017 02:27:55 PM EDT</em></h4>
 
 </div>
 
@@ -176,9 +176,11 @@ $(document).ready(function () {
 <h2>Import</h2>
 <div id="plain-text" class="section level3">
 <h3>Plain Text</h3>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># read.table(file.choose(), sep = &quot;,&quot;, header = TRUE)</span>
-
-table1 &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;c:/chuck/NYU/Stat Group/table1.txt&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">?<span class="kw">file.show</span>()
+<span class="kw">file.show</span>(<span class="st">&quot;c:/chuck/NYU/Stat Group/table1.txt&quot;</span>)
+?<span class="kw">read.table</span>()
+<span class="kw">read.table</span>(<span class="kw">file.choose</span>(), <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">table1 &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;c:/chuck/NYU/Stat Group/table1.txt&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>)
 
 table1</code></pre></div>
 <pre><code>  id female inc80 inc81 inc82
@@ -189,12 +191,46 @@ table1</code></pre></div>
 <div id="ms-excel" class="section level3">
 <h3>MS-Excel</h3>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(openxlsx)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">?read.xlsx</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">args</span>(read.xlsx)</code></pre></div>
+<pre><code>function (xlsxFile, sheet = 1, startRow = 1, colNames = TRUE, 
+    rowNames = FALSE, detectDates = FALSE, skipEmptyRows = TRUE, 
+    skipEmptyCols = TRUE, rows = NULL, cols = NULL, check.names = FALSE, 
+    namedRegion = NULL, na.strings = &quot;NA&quot;, fillMergedCells = FALSE) 
+NULL</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">hsiteA &lt;-<span class="st"> </span><span class="kw">read.xlsx</span>(<span class="st">&quot;c:/chuck/NYU/Stat Group/Hands-On-R-Practice/Health.xlsx&quot;</span>, <span class="dt">sheet =</span> <span class="dv">1</span>)
+hsiteB &lt;-<span class="st"> </span><span class="kw">read.xlsx</span>(<span class="st">&quot;c:/chuck/NYU/Stat Group/Hands-On-R-Practice/Health.xlsx&quot;</span>, <span class="dt">sheet =</span> <span class="st">&quot;Site B&quot;</span>, <span class="dt">detectDates =</span> <span class="ot">TRUE</span>)
+
+hsiteA</code></pre></div>
+<pre><code>   Site Patient Score  Date
+1     A       1    47 43005
+2     A       2    54 43006
+3     A       3    68 43007
+4     A       4    55 43008
+5     A       5    36 43009
+6     A       6    52 43009
+7     A       7    28 43009
+8     A       8    49 43009
+9     A       9    39 43009
+10    A      10    37 43009</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">hsiteB</code></pre></div>
+<pre><code>   Site Patient Score       Date
+1     B      11    57 2017-09-27
+2     B      12    59 2017-09-28
+3     B      13    54 2017-09-29
+4     B      14    59 2017-09-30
+5     B      15    64 2017-10-01
+6     B      16    56 2017-10-01
+7     B      17    62 2017-10-01
+8     B      18    56 2017-10-01
+9     B      19    56 2017-10-01
+10    B      20    52 2017-10-01</code></pre>
 </div>
 <div id="spss" class="section level3">
 <h3>SPSS</h3>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(foreign)
-
-bank &lt;-<span class="st"> </span><span class="kw">read.spss</span>(<span class="st">&quot;c:/chuck/NYU/Stat Group/bank.sav&quot;</span>, <span class="dt">to.data.frame =</span> <span class="ot">TRUE</span>)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(foreign)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">?read.spss</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">bank &lt;-<span class="st"> </span><span class="kw">read.spss</span>(<span class="st">&quot;c:/chuck/NYU/Stat Group/bank.sav&quot;</span>, <span class="dt">to.data.frame =</span> <span class="ot">TRUE</span>)
 
 <span class="kw">head</span>(bank)</code></pre></div>
 <pre><code>   ID SALBEG   SEX TIME   AGE SALNOW EDLEVEL  WORK          JOBCAT
@@ -221,10 +257,32 @@ bank &lt;-<span class="st"> </span><span class="kw">read.spss</span>(<span class
 </div>
 <div id="stata" class="section level3">
 <h3>Stata</h3>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nhanes_dta &lt;-<span class="st"> </span><span class="kw">read.dta</span>(<span class="st">&quot;c:/chuck/NYU/Stat Group/nhanes.dta&quot;</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">?read.dta</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nhanes_dta &lt;-<span class="st"> </span><span class="kw">read.dta</span>(<span class="st">&quot;c:/chuck/NYU/Stat Group/nhanes.dta&quot;</span>)
+
+<span class="kw">head</span>(nhanes_dta)</code></pre></div>
+<pre><code>  age  bmi hyp chl
+1   1   NA  NA  NA
+2   2 22.7   1 187
+3   1   NA   1 187
+4   3   NA  NA  NA
+5   1 20.4   1 113
+6   3   NA  NA 184</code></pre>
 </div>
 <div id="sas" class="section level3">
 <h3>SAS</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(sas7bdat)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">?read.sas7bdat</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">hsb2_sas &lt;-<span class="st"> </span><span class="kw">read.sas7bdat</span>(<span class="st">&quot;c:/chuck/NYU/Stat Group/Hands-On-R-Practice/hsb2.sas7bdat&quot;</span>)
+
+<span class="kw">head</span>(hsb2_sas)</code></pre></div>
+<pre><code>  id female race ses schtyp prog read write math science socst
+1  3      0    1   1      1    2   63    65   48      63    56
+2  5      0    1   1      1    2   47    40   43      45    31
+3 16      0    1   1      1    3   47    31   44      36    36
+4 35      1    1   1      2    1   60    54   50      50    51
+5  8      1    1   1      1    2   39    44   52      44    48
+6 19      1    1   1      1    1   28    46   43      44    51</code></pre>
 </div>
 </div>
 <div id="export" class="section level2">
@@ -239,59 +297,206 @@ bank &lt;-<span class="st"> </span><span class="kw">read.spss</span>(<span class
 4          4.6         3.1          1.5         0.2  setosa
 5          5.0         3.6          1.4         0.2  setosa
 6          5.4         3.9          1.7         0.4  setosa</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">?write.table</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">write.table</span>(iris, <span class="dt">file =</span> <span class="st">&quot;c:/chuck/NYU/Stat Group/iris.csv&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>, <span class="dt">col.names =</span> <span class="ot">TRUE</span>, <span class="dt">row.names =</span> <span class="ot">FALSE</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">file.show</span>(<span class="st">&quot;c:/chuck/NYU/Stat Group/iris.csv&quot;</span>)</code></pre></div>
 </div>
 <div id="ms-excel-1" class="section level3">
 <h3>MS-Excel</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">?write.xlsx</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">write.xlsx</span>(iris, <span class="dt">file =</span> <span class="st">&quot;c:/chuck/NYU/Stat Group/iris.xlsx&quot;</span>)</code></pre></div>
 </div>
 <div id="spss-1" class="section level3">
 <h3>SPSS</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">?write.foreign</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">write.foreign</span>(iris, <span class="dt">datafile =</span> <span class="st">&quot;c:/chuck/NYU/Stat Group/iris.dat&quot;</span>, 
                     <span class="dt">codefile =</span> <span class="st">&quot;c:/chuck/NYU/Stat Group/iris-read.sps&quot;</span>, 
-                    <span class="dt">package =</span> <span class="st">&quot;SPSS&quot;</span>)
-
-<span class="co"># file.show(&quot;c:/chuck/NYU/Stat Group/iris-read.sps&quot;)</span></code></pre></div>
+                    <span class="dt">package =</span> <span class="st">&quot;SPSS&quot;</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">file.show</span>(<span class="st">&quot;c:/chuck/NYU/Stat Group/iris-read.sps&quot;</span>)</code></pre></div>
 </div>
 <div id="stata-1" class="section level3">
 <h3>Stata</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">?write.dta</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">write.dta</span>(iris, <span class="dt">file =</span> <span class="st">&quot;c:/chuck/NYU/Stat Group/iris.dta&quot;</span>, <span class="dt">version=</span><span class="dv">10</span>)</code></pre></div>
-</div>
-<div id="sas-1" class="section level3">
-<h3>SAS</h3>
 </div>
 </div>
 </div>
 <div id="data-management" class="section level1">
 <h1>Data Management</h1>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(dplyr)
-<span class="kw">library</span>(tidyr)</code></pre></div>
-<div id="calculate-new-variables" class="section level2">
-<h2>Calculate New Variables</h2>
-</div>
-<div id="recode" class="section level2">
-<h2>Recode</h2>
-</div>
-<div id="merge" class="section level2">
-<h2>Merge</h2>
+<span class="kw">library</span>(tidyr)
+<span class="kw">library</span>(hflights)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(hflights)
+<span class="kw">summary</span>(hflights)
+hflights &lt;-<span class="st"> </span><span class="kw">tbl_df</span>(hflights)
+<span class="kw">glimpse</span>(hflights)</code></pre></div>
+<div id="create-new-variables" class="section level2">
+<h2>Create New Variables</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">g1 &lt;-<span class="st"> </span><span class="kw">mutate</span>(hflights, <span class="dt">ActualGroundTime =</span> ActualElapsedTime <span class="op">-</span><span class="st"> </span>AirTime,
+                       <span class="dt">AverageSpeed =</span> Distance <span class="op">/</span><span class="st"> </span>AirTime <span class="op">*</span><span class="st"> </span><span class="dv">60</span>)
+
+<span class="kw">summary</span>(g1)</code></pre></div>
+<pre><code>      Year          Month          DayofMonth      DayOfWeek    
+ Min.   :2011   Min.   : 1.000   Min.   : 1.00   Min.   :1.000  
+ 1st Qu.:2011   1st Qu.: 4.000   1st Qu.: 8.00   1st Qu.:2.000  
+ Median :2011   Median : 7.000   Median :16.00   Median :4.000  
+ Mean   :2011   Mean   : 6.514   Mean   :15.74   Mean   :3.948  
+ 3rd Qu.:2011   3rd Qu.: 9.000   3rd Qu.:23.00   3rd Qu.:6.000  
+ Max.   :2011   Max.   :12.000   Max.   :31.00   Max.   :7.000  
+                                                                
+    DepTime        ArrTime     UniqueCarrier        FlightNum   
+ Min.   :   1   Min.   :   1   Length:227496      Min.   :   1  
+ 1st Qu.:1021   1st Qu.:1215   Class :character   1st Qu.: 855  
+ Median :1416   Median :1617   Mode  :character   Median :1696  
+ Mean   :1396   Mean   :1578                      Mean   :1962  
+ 3rd Qu.:1801   3rd Qu.:1953                      3rd Qu.:2755  
+ Max.   :2400   Max.   :2400                      Max.   :7290  
+ NA's   :2905   NA's   :3066                                    
+   TailNum          ActualElapsedTime    AirTime         ArrDelay      
+ Length:227496      Min.   : 34.0     Min.   : 11.0   Min.   :-70.000  
+ Class :character   1st Qu.: 77.0     1st Qu.: 58.0   1st Qu.: -8.000  
+ Mode  :character   Median :128.0     Median :107.0   Median :  0.000  
+                    Mean   :129.3     Mean   :108.1   Mean   :  7.094  
+                    3rd Qu.:165.0     3rd Qu.:141.0   3rd Qu.: 11.000  
+                    Max.   :575.0     Max.   :549.0   Max.   :978.000  
+                    NA's   :3622      NA's   :3622    NA's   :3622     
+    DepDelay          Origin              Dest              Distance     
+ Min.   :-33.000   Length:227496      Length:227496      Min.   :  79.0  
+ 1st Qu.: -3.000   Class :character   Class :character   1st Qu.: 376.0  
+ Median :  0.000   Mode  :character   Mode  :character   Median : 809.0  
+ Mean   :  9.445                                         Mean   : 787.8  
+ 3rd Qu.:  9.000                                         3rd Qu.:1042.0  
+ Max.   :981.000                                         Max.   :3904.0  
+ NA's   :2905                                                            
+     TaxiIn           TaxiOut         Cancelled       CancellationCode  
+ Min.   :  1.000   Min.   :  1.00   Min.   :0.00000   Length:227496     
+ 1st Qu.:  4.000   1st Qu.: 10.00   1st Qu.:0.00000   Class :character  
+ Median :  5.000   Median : 14.00   Median :0.00000   Mode  :character  
+ Mean   :  6.099   Mean   : 15.09   Mean   :0.01307                     
+ 3rd Qu.:  7.000   3rd Qu.: 18.00   3rd Qu.:0.00000                     
+ Max.   :165.000   Max.   :163.00   Max.   :1.00000                     
+ NA's   :3066      NA's   :2947                                         
+    Diverted        ActualGroundTime  AverageSpeed   
+ Min.   :0.000000   Min.   :  5.00   Min.   : 98.82  
+ 1st Qu.:0.000000   1st Qu.: 15.00   1st Qu.:389.36  
+ Median :0.000000   Median : 20.00   Median :429.38  
+ Mean   :0.002853   Mean   : 21.18   Mean   :421.02  
+ 3rd Qu.:0.000000   3rd Qu.: 25.00   3rd Qu.:462.50  
+ Max.   :1.000000   Max.   :176.00   Max.   :763.64  
+                    NA's   :3622     NA's   :3622    </code></pre>
 </div>
 <div id="subset" class="section level2">
 <h2>Subset</h2>
+<div id="selecting-variables" class="section level3">
+<h3>Selecting Variables</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">select</span>(hflights, ActualElapsedTime, AirTime, ArrDelay, DepDelay)
+<span class="kw">select</span>(hflights, Origin<span class="op">:</span>Cancelled)
+<span class="kw">select</span>(hflights, Year<span class="op">:</span>DayOfWeek, ArrDelay<span class="op">:</span>Diverted)
+<span class="kw">select</span>(hflights, <span class="kw">ends_with</span>(<span class="st">&quot;Delay&quot;</span>))
+<span class="kw">select</span>(hflights, UniqueCarrier, <span class="kw">ends_with</span>(<span class="st">&quot;Num&quot;</span>), <span class="kw">starts_with</span>(<span class="st">&quot;Cancel&quot;</span>))</code></pre></div>
+</div>
+<div id="selecting-observations" class="section level3">
+<h3>Selecting Observations</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">filter</span>(hflights, Distance <span class="op">&gt;=</span><span class="st"> </span><span class="dv">3000</span>)
+<span class="kw">filter</span>(hflights, UniqueCarrier <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;JetBlue&quot;</span>,<span class="st">&quot;Southwest&quot;</span>,<span class="st">&quot;Delta&quot;</span>))
+<span class="kw">filter</span>(hflights, (TaxiOut <span class="op">+</span><span class="st"> </span>TaxiIn) <span class="op">&gt;</span><span class="st"> </span>AirTime)
+<span class="kw">filter</span>(hflights, DepTime <span class="op">&lt;</span><span class="st"> </span><span class="dv">500</span> <span class="op">|</span><span class="st"> </span>ArrTime <span class="op">&gt;</span><span class="st"> </span><span class="dv">2200</span>)</code></pre></div>
+</div>
+<div id="selecting-variables-and-observations" class="section level3">
+<h3>Selecting Variables and Observations</h3>
+</div>
+</div>
+<div id="arrange" class="section level2">
+<h2>Arrange</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">arrange</span>(hflights, UniqueCarrier, DepDelay)</code></pre></div>
 </div>
 <div id="aggregate" class="section level2">
 <h2>Aggregate</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">hflights <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">group_by</span>(Month) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">summarize</span>(<span class="dt">n =</span> <span class="kw">n</span>(),
+            <span class="dt">Mean_Arrival_Delay =</span> <span class="kw">mean</span>(ArrDelay, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),
+            <span class="dt">SD_Arrival_Delay =</span> <span class="kw">sd</span>(ArrDelay, <span class="dt">na.rm =</span><span class="ot">TRUE</span>))</code></pre></div>
+</div>
+<div id="merge" class="section level2">
+<h2>Merge</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">members &lt;-<span class="st"> </span><span class="kw">read.xlsx</span>(<span class="st">&quot;c:/chuck/NYU/Stat Group/Hands-On-R-Practice/Bands.xlsx&quot;</span>, <span class="dt">sheet =</span> <span class="st">&quot;Members&quot;</span>)
+<span class="kw">str</span>(members)</code></pre></div>
+<pre><code>'data.frame':   3 obs. of  2 variables:
+ $ name: chr  &quot;Mick&quot; &quot;John&quot; &quot;Paul&quot;
+ $ band: chr  &quot;Stones&quot; &quot;Beatles&quot; &quot;Beatles&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">instruments &lt;-<span class="st"> </span><span class="kw">read.xlsx</span>(<span class="st">&quot;c:/chuck/NYU/Stat Group/Hands-On-R-Practice/Bands.xlsx&quot;</span>, <span class="dt">sheet =</span> <span class="st">&quot;Instruments&quot;</span>)
+<span class="kw">str</span>(instruments)</code></pre></div>
+<pre><code>'data.frame':   3 obs. of  2 variables:
+ $ name : chr  &quot;John&quot; &quot;Paul&quot; &quot;Keith&quot;
+ $ plays: chr  &quot;Guitar&quot; &quot;Bass&quot; &quot;Guitar&quot;</code></pre>
+<ul>
+<li>How to join band and instrument together in one data frame?</li>
+<li>The variable name is a unique identifier or “key” present in both members and instruments</li>
+</ul>
+<div id="left_join" class="section level3">
+<h3>left_join</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">left_join</span>(members, instruments, <span class="dt">by =</span> <span class="st">&quot;name&quot;</span>)</code></pre></div>
+<pre><code>  name    band  plays
+1 Mick  Stones   &lt;NA&gt;
+2 John Beatles Guitar
+3 Paul Beatles   Bass</code></pre>
+</div>
+<div id="right_join" class="section level3">
+<h3>right_join</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">right_join</span>(members, instruments, <span class="dt">by =</span> <span class="st">&quot;name&quot;</span>)</code></pre></div>
+<pre><code>   name    band  plays
+1  John Beatles Guitar
+2  Paul Beatles   Bass
+3 Keith    &lt;NA&gt; Guitar</code></pre>
+</div>
+<div id="inner_join" class="section level3">
+<h3>inner_join</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">inner_join</span>(members, instruments, <span class="dt">by =</span> <span class="st">&quot;name&quot;</span>)</code></pre></div>
+<pre><code>  name    band  plays
+1 John Beatles Guitar
+2 Paul Beatles   Bass</code></pre>
+</div>
+<div id="full_join" class="section level3">
+<h3>full_join</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">full_join</span>(members, instruments, <span class="dt">by =</span> <span class="st">&quot;name&quot;</span>)</code></pre></div>
+<pre><code>   name    band  plays
+1  Mick  Stones   &lt;NA&gt;
+2  John Beatles Guitar
+3  Paul Beatles   Bass
+4 Keith    &lt;NA&gt; Guitar</code></pre>
+</div>
 </div>
 <div id="reshape" class="section level2">
 <h2>Reshape</h2>
 <div id="wide-to-long" class="section level3">
 <h3>Wide to Long</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">?gather</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">gather</span>(iris, <span class="dt">key =</span> flower_att, <span class="dt">value =</span> measurement,
+       Sepal.Length, Sepal.Width, Petal.Length, Petal.Width)</code></pre></div>
 </div>
 <div id="long-to-wide" class="section level3">
 <h3>Long to Wide</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">?spread</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">long_DF &lt;-<span class="st"> </span><span class="kw">expand.grid</span>(<span class="dt">Subject =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="dt">Time =</span> <span class="kw">c</span>(<span class="st">&quot;BL&quot;</span>,<span class="st">&quot;FU1&quot;</span>,<span class="st">&quot;FU2&quot;</span>))
+long_DF<span class="op">$</span>Y &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dv">9</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)
+long_DF</code></pre></div>
+<pre><code>  Subject Time Y
+1       1   BL 1
+2       2   BL 3
+3       3   BL 3
+4       1  FU1 3
+5       2  FU1 3
+6       3  FU1 5
+7       1  FU2 1
+8       2  FU2 3
+9       3  FU2 2</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">spread</span>(long_DF, <span class="dt">key =</span> Time, <span class="dt">value =</span> Y)</code></pre></div>
+<pre><code>  Subject BL FU1 FU2
+1       1  1   3   1
+2       2  3   3   3
+3       3  3   5   2</code></pre>
 </div>
-</div>
-<div id="arrange" class="section level2">
-<h2>Arrange</h2>
 </div>
 </div>
 <div id="analysis" class="section level1">
@@ -300,21 +505,362 @@ bank &lt;-<span class="st"> </span><span class="kw">read.spss</span>(<span class
 <h2>Descriptive Statistics</h2>
 <div id="categorical" class="section level3">
 <h3>Categorical</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(descr)
+
+<span class="kw">freq</span>(iris<span class="op">$</span>Species, <span class="dt">plot=</span><span class="ot">FALSE</span>)</code></pre></div>
+<pre><code>iris$Species 
+           Frequency Percent
+setosa            50   33.33
+versicolor        50   33.33
+virginica         50   33.33
+Total            150  100.00</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">with</span>(bank, <span class="kw">CrossTable</span>(GENDER, MINORITY))</code></pre></div>
+<pre><code>   Cell Contents 
+|-------------------------|
+|                       N | 
+| Chi-square contribution | 
+|           N / Row Total | 
+|           N / Col Total | 
+|         N / Table Total | 
+|-------------------------|
+
+==================================
+          MINORITY
+GENDER    White   Nonwhite   Total
+----------------------------------
+M           194         64     258
+          0.271      0.965        
+          0.752      0.248   0.544
+          0.524      0.615        
+          0.409      0.135        
+----------------------------------
+F           176         40     216
+          0.324      1.153        
+          0.815      0.185   0.456
+          0.476      0.385        
+          0.371      0.084        
+----------------------------------
+Total       370        104     474
+          0.781      0.219        
+==================================</code></pre>
 </div>
 <div id="continuous" class="section level3">
 <h3>Continuous</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(iris)</code></pre></div>
+<pre><code>  Sepal.Length    Sepal.Width     Petal.Length    Petal.Width   
+ Min.   :4.300   Min.   :2.000   Min.   :1.000   Min.   :0.100  
+ 1st Qu.:5.100   1st Qu.:2.800   1st Qu.:1.600   1st Qu.:0.300  
+ Median :5.800   Median :3.000   Median :4.350   Median :1.300  
+ Mean   :5.843   Mean   :3.057   Mean   :3.758   Mean   :1.199  
+ 3rd Qu.:6.400   3rd Qu.:3.300   3rd Qu.:5.100   3rd Qu.:1.800  
+ Max.   :7.900   Max.   :4.400   Max.   :6.900   Max.   :2.500  
+       Species  
+ setosa    :50  
+ versicolor:50  
+ virginica :50  
+                
+                
+                </code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">iris <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>Species) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">gather</span>(Variable, Value) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">group_by</span>(Variable) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">summarize</span>(<span class="dt">n =</span> <span class="kw">n</span>(),
+            <span class="dt">Mean =</span> <span class="kw">mean</span>(Value),
+            <span class="dt">SD =</span> <span class="kw">sd</span>(Value),
+            <span class="dt">Median =</span> <span class="kw">median</span>(Value),
+            <span class="dt">IQR =</span> <span class="kw">IQR</span>(Value),
+            <span class="dt">Min =</span> <span class="kw">min</span>(Value),
+            <span class="dt">Max =</span> <span class="kw">max</span>(Value)) <span class="op">%&gt;%</span>
+<span class="st">  </span>knitr<span class="op">::</span><span class="kw">kable</span>()</code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Variable</th>
+<th align="right">n</th>
+<th align="right">Mean</th>
+<th align="right">SD</th>
+<th align="right">Median</th>
+<th align="right">IQR</th>
+<th align="right">Min</th>
+<th align="right">Max</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Petal.Length</td>
+<td align="right">150</td>
+<td align="right">3.758000</td>
+<td align="right">1.7652982</td>
+<td align="right">4.35</td>
+<td align="right">3.5</td>
+<td align="right">1.0</td>
+<td align="right">6.9</td>
+</tr>
+<tr class="even">
+<td align="left">Petal.Width</td>
+<td align="right">150</td>
+<td align="right">1.199333</td>
+<td align="right">0.7622377</td>
+<td align="right">1.30</td>
+<td align="right">1.5</td>
+<td align="right">0.1</td>
+<td align="right">2.5</td>
+</tr>
+<tr class="odd">
+<td align="left">Sepal.Length</td>
+<td align="right">150</td>
+<td align="right">5.843333</td>
+<td align="right">0.8280661</td>
+<td align="right">5.80</td>
+<td align="right">1.3</td>
+<td align="right">4.3</td>
+<td align="right">7.9</td>
+</tr>
+<tr class="even">
+<td align="left">Sepal.Width</td>
+<td align="right">150</td>
+<td align="right">3.057333</td>
+<td align="right">0.4358663</td>
+<td align="right">3.00</td>
+<td align="right">0.5</td>
+<td align="right">2.0</td>
+<td align="right">4.4</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div id="continuous-by-categories" class="section level3">
 <h3>Continuous By Categories</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">iris <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">gather</span>(Variable, Value, <span class="op">-</span>Species) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">group_by</span>(Species, Variable) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">summarize</span>(<span class="dt">n =</span> <span class="kw">n</span>(),
+            <span class="dt">Mean =</span> <span class="kw">mean</span>(Value),
+            <span class="dt">SD =</span> <span class="kw">sd</span>(Value),
+            <span class="dt">Median =</span> <span class="kw">median</span>(Value),
+            <span class="dt">IQR =</span> <span class="kw">IQR</span>(Value),
+            <span class="dt">Min =</span> <span class="kw">min</span>(Value),
+            <span class="dt">Max =</span> <span class="kw">max</span>(Value)) <span class="op">%&gt;%</span>
+<span class="st">  </span>knitr<span class="op">::</span><span class="kw">kable</span>()</code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Species</th>
+<th align="left">Variable</th>
+<th align="right">n</th>
+<th align="right">Mean</th>
+<th align="right">SD</th>
+<th align="right">Median</th>
+<th align="right">IQR</th>
+<th align="right">Min</th>
+<th align="right">Max</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">setosa</td>
+<td align="left">Petal.Length</td>
+<td align="right">50</td>
+<td align="right">1.462</td>
+<td align="right">0.1736640</td>
+<td align="right">1.50</td>
+<td align="right">0.175</td>
+<td align="right">1.0</td>
+<td align="right">1.9</td>
+</tr>
+<tr class="even">
+<td align="left">setosa</td>
+<td align="left">Petal.Width</td>
+<td align="right">50</td>
+<td align="right">0.246</td>
+<td align="right">0.1053856</td>
+<td align="right">0.20</td>
+<td align="right">0.100</td>
+<td align="right">0.1</td>
+<td align="right">0.6</td>
+</tr>
+<tr class="odd">
+<td align="left">setosa</td>
+<td align="left">Sepal.Length</td>
+<td align="right">50</td>
+<td align="right">5.006</td>
+<td align="right">0.3524897</td>
+<td align="right">5.00</td>
+<td align="right">0.400</td>
+<td align="right">4.3</td>
+<td align="right">5.8</td>
+</tr>
+<tr class="even">
+<td align="left">setosa</td>
+<td align="left">Sepal.Width</td>
+<td align="right">50</td>
+<td align="right">3.428</td>
+<td align="right">0.3790644</td>
+<td align="right">3.40</td>
+<td align="right">0.475</td>
+<td align="right">2.3</td>
+<td align="right">4.4</td>
+</tr>
+<tr class="odd">
+<td align="left">versicolor</td>
+<td align="left">Petal.Length</td>
+<td align="right">50</td>
+<td align="right">4.260</td>
+<td align="right">0.4699110</td>
+<td align="right">4.35</td>
+<td align="right">0.600</td>
+<td align="right">3.0</td>
+<td align="right">5.1</td>
+</tr>
+<tr class="even">
+<td align="left">versicolor</td>
+<td align="left">Petal.Width</td>
+<td align="right">50</td>
+<td align="right">1.326</td>
+<td align="right">0.1977527</td>
+<td align="right">1.30</td>
+<td align="right">0.300</td>
+<td align="right">1.0</td>
+<td align="right">1.8</td>
+</tr>
+<tr class="odd">
+<td align="left">versicolor</td>
+<td align="left">Sepal.Length</td>
+<td align="right">50</td>
+<td align="right">5.936</td>
+<td align="right">0.5161711</td>
+<td align="right">5.90</td>
+<td align="right">0.700</td>
+<td align="right">4.9</td>
+<td align="right">7.0</td>
+</tr>
+<tr class="even">
+<td align="left">versicolor</td>
+<td align="left">Sepal.Width</td>
+<td align="right">50</td>
+<td align="right">2.770</td>
+<td align="right">0.3137983</td>
+<td align="right">2.80</td>
+<td align="right">0.475</td>
+<td align="right">2.0</td>
+<td align="right">3.4</td>
+</tr>
+<tr class="odd">
+<td align="left">virginica</td>
+<td align="left">Petal.Length</td>
+<td align="right">50</td>
+<td align="right">5.552</td>
+<td align="right">0.5518947</td>
+<td align="right">5.55</td>
+<td align="right">0.775</td>
+<td align="right">4.5</td>
+<td align="right">6.9</td>
+</tr>
+<tr class="even">
+<td align="left">virginica</td>
+<td align="left">Petal.Width</td>
+<td align="right">50</td>
+<td align="right">2.026</td>
+<td align="right">0.2746501</td>
+<td align="right">2.00</td>
+<td align="right">0.500</td>
+<td align="right">1.4</td>
+<td align="right">2.5</td>
+</tr>
+<tr class="odd">
+<td align="left">virginica</td>
+<td align="left">Sepal.Length</td>
+<td align="right">50</td>
+<td align="right">6.588</td>
+<td align="right">0.6358796</td>
+<td align="right">6.50</td>
+<td align="right">0.675</td>
+<td align="right">4.9</td>
+<td align="right">7.9</td>
+</tr>
+<tr class="even">
+<td align="left">virginica</td>
+<td align="left">Sepal.Width</td>
+<td align="right">50</td>
+<td align="right">2.974</td>
+<td align="right">0.3224966</td>
+<td align="right">3.00</td>
+<td align="right">0.375</td>
+<td align="right">2.2</td>
+<td align="right">3.8</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div id="inferential-statistics" class="section level2">
 <h2>Inferential Statistics</h2>
 <div id="fishers-exact-test" class="section level3">
 <h3>Fisher’s Exact Test</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">midata &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">Condition =</span> <span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">'Placebo'</span>,<span class="st">'Aspirin'</span>), <span class="dt">each =</span> <span class="dv">1000</span>),
+                     <span class="dt">MI =</span> <span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">'No'</span>,<span class="st">'Yes'</span>,<span class="st">'No'</span>,<span class="st">'Yes'</span>), <span class="kw">c</span>(<span class="dv">980</span>,<span class="dv">20</span>,<span class="dv">990</span>,<span class="dv">10</span>)))
+
+<span class="kw">with</span>(midata, <span class="kw">CrossTable</span>(Condition, MI))
+<span class="kw">with</span>(midata, <span class="kw">fisher.test</span>(Condition, MI))</code></pre></div>
+<p><a href="https://stats.idre.ucla.edu/spss/output/t-test/">Examples of t-test for SPSS</a></p>
 </div>
-<div id="section" class="section level3">
-<h3></h3>
+<div id="single-sample-t-test" class="section level3">
+<h3>Single Sample t-test</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">with</span>(hsb2_sas, <span class="kw">t.test</span>(write, <span class="dt">mu =</span> <span class="dv">50</span>))</code></pre></div>
+<pre><code>
+    One Sample t-test
+
+data:  write
+t = 4.1403, df = 199, p-value = 5.121e-05
+alternative hypothesis: true mean is not equal to 50
+95 percent confidence interval:
+ 51.45332 54.09668
+sample estimates:
+mean of x 
+   52.775 </code></pre>
+</div>
+<div id="paired-t-test" class="section level3">
+<h3>Paired t-test</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">with</span>(hsb2_sas, <span class="kw">t.test</span>(write, read, <span class="dt">paired =</span> <span class="ot">TRUE</span>))</code></pre></div>
+<pre><code>
+    Paired t-test
+
+data:  write and read
+t = 0.86731, df = 199, p-value = 0.3868
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -0.6941424  1.7841424
+sample estimates:
+mean of the differences 
+                  0.545 </code></pre>
+</div>
+<div id="independent-group-t-test" class="section level3">
+<h3>Independent Group t-test</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">with</span>(hsb2_sas, <span class="kw">t.test</span>(write <span class="op">~</span><span class="st"> </span>female))</code></pre></div>
+<pre><code>
+    Welch Two Sample t-test
+
+data:  write by female
+t = -3.6564, df = 169.71, p-value = 0.0003409
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -7.499159 -2.240734
+sample estimates:
+mean in group 0 mean in group 1 
+       50.12088        54.99083 </code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">with</span>(hsb2_sas, <span class="kw">t.test</span>(write <span class="op">~</span><span class="st"> </span>female, <span class="dt">var.equal =</span> <span class="ot">TRUE</span>))</code></pre></div>
+<pre><code>
+    Two Sample t-test
+
+data:  write by female
+t = -3.7341, df = 198, p-value = 0.0002463
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -7.441835 -2.298059
+sample estimates:
+mean in group 0 mean in group 1 
+       50.12088        54.99083 </code></pre>
 </div>
 </div>
 </div>
