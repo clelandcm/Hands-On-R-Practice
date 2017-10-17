@@ -394,42 +394,42 @@ with(hsb2_sas, t.test(write ~ female, var.equal = TRUE))
 
 Very beginning of the Rmd file:
 
-```{r, echo=FALSE, asis = TRUE}
-cat("---\n
-title: \"Hands-On R Practice\"\n
-author: \"Chuck Cleland\"\n
-date: \"October 26, 2017\"\n
-output:\n
-  html_document:\n
-    highlight: tango\n
-    theme: readable\n
----")
+```
+---
+title: "Hands-On R Practice"
+author: "Chuck Cleland"
+date: "October 26, 2017"
+output:
+  html_document:
+    highlight: tango
+    theme: readable
+---
 ```
 
 ## Table of Contents
 
-```{r, echo=FALSE, asis = TRUE}
-cat("---\n
-title: \"Hands-On R Practice\"\n
-author: \"Chuck Cleland\"\n
-date: \"October 26, 2017\"\n
-output:\n
-  html_document:\n
-    highlight: tango\n
-    theme: readable\n
-    toc: yes\n
----")
+```
+---
+title: "Hands-On R Practice"
+author: "Chuck Cleland"
+date: "October 26, 2017"
+output:
+  html_document:
+    highlight: tango
+    theme: readable
+    toc: yes
+---
 ```
 
 ## Headers
 
-```{r, echo=FALSE, asis = TRUE}
-cat("# Header1\n
-## Header 2\n
-### Header 3\n
-#### Header 4\n
-##### Header 5\n
-###### Header 6\n")
+```
+# Header1
+## Header 2
+### Header 3
+#### Header 4
+##### Header 5
+###### Header 6
 ```
 
 # Header1
@@ -443,12 +443,12 @@ cat("# Header1\n
 
 ### Unordered
 
-```{r, echo=FALSE, asis = TRUE}
-cat("* unordered list\n
-   + sub-item 1\n
-   + sub-item 2\n
-       - sub-sub-item 1\n
-* item 2\n")
+```
+* unordered list
+   + sub-item 1
+   + sub-item 2
+       - sub-sub-item 1
+* item 2
 ```
 
 * unordered list
@@ -459,11 +459,11 @@ cat("* unordered list\n
 
 ### Ordered
 
-```{r, echo=FALSE, asis = TRUE}
-cat("1. ordered list\n
-2. item 2\n
-   i) sub-item 1\n
-     A. sub-sub-item 1")
+```
+1. ordered list
+2. item 2
+   i) sub-item 1
+     A. sub-sub-item 1
 ```
 
 1. ordered list
@@ -473,8 +473,10 @@ cat("1. ordered list\n
 
 ## R Code
 
-```{r, echo=FALSE, asis = TRUE}
-cat("```{r}\nrnorm(10)\n```")
+```{r, echo=FALSE}
+cat("```{r}\n
+rnorm(10)\n
+ ```")
 ```
 
 ```{r}
@@ -489,8 +491,8 @@ rnorm(10)
 
 ### Examples of R Markdown Reports
 
-#### [Heart To Heart 2 Weekly Summary](https://clelandcm.github.io/Heart-to-Heart-2/Weekly_Report.html)
 #### [My FitBit](https://clelandcm.github.io/CMCFitBit/)
+#### [Steiger Example](http://www.statpower.net/Content/310/R%20Stuff/SampleMarkdown.html)
 
 # Sites
 
@@ -502,4 +504,4 @@ rnorm(10)
 * [UCLA Institute for Digital Research & Education](https://stats.idre.ucla.edu/)
 * [R Markdown Cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/01/rmarkdown-cheatsheet-2.0.png)
 
-
+<center>![Prosper](prosper.jpg)</center>
