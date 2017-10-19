@@ -318,6 +318,76 @@ long_DF %>%
 
 There are other ways to do merging, filtering, variable selection, and reshaping using base R and the data.table package.
 
+# Looking for Lost Observations
+## Generate Data for Example
+### Raw Data
+```{r}
+raw_data <- expand.grid(PATIENT = LETTERS[1:10], TIME = 1:3)
+```
+
+### Processed Data with Missing Observations
+```{r}
+set.seed(9417)
+processed_data <- raw_data[sample(30, 24),]
+```
+
+### Add One Duplicated Observation to Processed Data
+```{r}
+processed_data <- bind_rows(processed_data, processed_data[1,])
+```
+
+## Check Whether Raw and Processed Are Equal
+```{r}
+setequal(raw_data, processed_data)
+```
+
+## How Many Unique Patients
+### Raw Data
+```{r}
+raw_data %>% 
+  count(PATIENT) %>%
+  nrow()
+```
+
+### Processed Data
+```{r}
+processed_data %>% 
+  count(PATIENT) %>%
+  nrow()
+```
+
+## Observations in Raw But Not Processed
+```{r}
+anti_join(raw_data, processed_data)
+```
+
+## Observations in Processed But Not Raw
+```{r}
+anti_join(processed_data, raw_data)
+```
+
+## Check for Duplicates
+### Raw Data
+```{r}
+any(duplicated(raw_data))
+```
+
+### Processed Data
+```{r}
+any(duplicated(processed_data))
+```
+
+### Which Observations Are Duplicated?
+```{r}
+processed_data[duplicated(processed_data),]
+```
+
+## How Many Observations Appear in Both Raw and Processed?
+```{r}
+semi_join(raw_data, processed_data) %>%
+  nrow()
+```
+
 # Analysis
 ## Descriptive Statistics
 ### Categorical
@@ -387,6 +457,25 @@ with(hsb2_sas, t.test(write, read, paired = TRUE))
 ```{r}
 with(hsb2_sas, t.test(write ~ female))
 with(hsb2_sas, t.test(write ~ female, var.equal = TRUE))
+```
+
+### Correlation Coefficients
+```{r}
+hsb2_sas %>%
+  select(read:socst) %>%
+  cor() %>%
+  round(2)
+```
+
+```{r}
+cor.test(~ math + science, data = hsb2_sas)
+```
+
+### Linear Regression
+```{r}
+lm.1 <- lm(science ~ math + read, data = hsb2_sas)
+summary(lm.1)
+confint(lm.1)
 ```
 
 # Reports with R Markdown
