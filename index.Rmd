@@ -30,6 +30,7 @@ knitr::include_graphics("c:/chuck/NYU/Stat Group/Hands-On-R-Practice/Rlogo.png")
 * [MS-Excel Health](https://clelandcm.github.io/Hands-On-R-Practice/Health.xlsx)
 * [MS-Excel Bands](https://clelandcm.github.io/Hands-On-R-Practice/Bands.xlsx)
 * [SAS HSB2](https://clelandcm.github.io/Hands-On-R-Practice/hsb2.sas7bdat)
+* [SPSS Low Birth Weight](https://clelandcm.github.io/Hands-On-R-Practice/lowbwt.sav)
 
 # Packages to Install
 
@@ -264,6 +265,23 @@ inner_join(members, instruments, by = "name")
 ### full_join
 ```{r}
 full_join(members, instruments, by = "name")
+```
+
+## Rename Variables
+```{r}
+head(mtcars)
+```
+
+```{r}
+mtcars_new1 <- rename(mtcars, Cylinders = cyl)
+head(mtcars_new1)
+```
+
+```{r}
+mtcars_new1 %>% 
+  select(mpg:wt) %>% 
+  rename(`Miles per Gallon` = mpg) %>% 
+  head()
 ```
 
 ## Reshape
@@ -582,6 +600,7 @@ rnorm(10)
 
 #### [My FitBit](https://clelandcm.github.io/CMCFitBit/)
 #### [Steiger Example](http://www.statpower.net/Content/310/R%20Stuff/SampleMarkdown.html)
+#### [The R Markdown for This Page](https://clelandcm.github.io/Hands-On-R-Practice/index.Rmd) 
 
 # Sites
 
