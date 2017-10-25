@@ -33,7 +33,7 @@ knitr::include_graphics("c:/chuck/NYU/Stat Group/Hands-On-R-Practice/Rlogo.png")
 * [2016 Introduction to R](https://clelandcm.github.io/Hands-On-R-Practice/Introduction-to-R-Slides-27October2016.html)
 * [2016 Introduction to R Handouts](https://clelandcm.github.io/Hands-On-R-Practice/Introduction-to-R-Handout-27October2016.html)
 
-# Download
+# Six Data Sets to Download
 
 1. [Plain Text Table 1](https://clelandcm.github.io/Hands-On-R-Practice/table1.txt)
 2. [SPSS Bank](https://clelandcm.github.io/Hands-On-R-Practice/bank.sav)
@@ -47,15 +47,15 @@ If you would like to follow the low birth weight logistic regression example fro
 
 [SPSS Low Birth Weight](https://clelandcm.github.io/Hands-On-R-Practice/lowbwt.sav)
 
-# Packages to Install
+# Seven Packages to Install
 
-* [openxlsx](https://CRAN.R-project.org/package=openxlsx)
-* [foreign](https://CRAN.R-project.org/package=foreign)
-* [dplyr](https://CRAN.R-project.org/package=dplyr)
-* [tidyr](https://CRAN.R-project.org/package=tidyr)
-* [sas7bdat](https://CRAN.R-project.org/package=sas7bdat)
-* [descr](https://CRAN.R-project.org/package=descr)
-* [hflights](https://CRAN.R-project.org/package=hflights)
+1. [openxlsx](https://CRAN.R-project.org/package=openxlsx)
+2. [foreign](https://CRAN.R-project.org/package=foreign)
+3. [dplyr](https://CRAN.R-project.org/package=dplyr)
+4. [tidyr](https://CRAN.R-project.org/package=tidyr)
+5. [sas7bdat](https://CRAN.R-project.org/package=sas7bdat)
+6. [descr](https://CRAN.R-project.org/package=descr)
+7. [hflights](https://CRAN.R-project.org/package=hflights)
 
 # Getting Data Into and Out Of R
 
