@@ -17,6 +17,16 @@ knitr::opts_chunk$set(echo = TRUE, message=FALSE, warning=FALSE, comment=NA, dpi
 knitr::include_graphics("c:/chuck/NYU/Stat Group/Hands-On-R-Practice/Rlogo.png")
 ```
 
+# Install R and then RStudio
+## First Step, R Itself
+
+* [Download R for Linux](https://cloud.r-project.org/bin/linux/)
+* [Download R for (Mac) OS X](https://cloud.r-project.org/bin/macosx/)
+* [Download R for Windows](https://cloud.r-project.org/bin/windows/)
+
+## Second Step, RStudio
+* [RStudio](https://www.rstudio.com/products/rstudio/download/)
+
 # Review
 
 * [2016 Introduction to R](https://clelandcm.github.io/Hands-On-R-Practice/Introduction-to-R-Slides-27October2016.html)
