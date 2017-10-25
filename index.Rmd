@@ -25,6 +25,7 @@ knitr::include_graphics("c:/chuck/NYU/Stat Group/Hands-On-R-Practice/Rlogo.png")
 * [Download R for Windows](https://cloud.r-project.org/bin/windows/)
 
 ## Second Step, RStudio
+
 * [RStudio](https://www.rstudio.com/products/rstudio/download/)
 
 # Review
@@ -34,13 +35,17 @@ knitr::include_graphics("c:/chuck/NYU/Stat Group/Hands-On-R-Practice/Rlogo.png")
 
 # Download
 
-* [Plain Text Table 1](https://clelandcm.github.io/Hands-On-R-Practice/table1.txt)
-* [SPSS Bank](https://clelandcm.github.io/Hands-On-R-Practice/bank.sav)
-* [Stata nhanes](https://clelandcm.github.io/Hands-On-R-Practice/nhanes.dta)
-* [MS-Excel Health](https://clelandcm.github.io/Hands-On-R-Practice/Health.xlsx)
-* [MS-Excel Bands](https://clelandcm.github.io/Hands-On-R-Practice/Bands.xlsx)
-* [SAS HSB2](https://clelandcm.github.io/Hands-On-R-Practice/hsb2.sas7bdat)
-* [SPSS Low Birth Weight](https://clelandcm.github.io/Hands-On-R-Practice/lowbwt.sav)
+1. [Plain Text Table 1](https://clelandcm.github.io/Hands-On-R-Practice/table1.txt)
+2. [SPSS Bank](https://clelandcm.github.io/Hands-On-R-Practice/bank.sav)
+3. [Stata nhanes](https://clelandcm.github.io/Hands-On-R-Practice/nhanes.dta)
+4. [MS-Excel Health](https://clelandcm.github.io/Hands-On-R-Practice/Health.xlsx)
+5. [MS-Excel Bands](https://clelandcm.github.io/Hands-On-R-Practice/Bands.xlsx)
+6. [SAS HSB2](https://clelandcm.github.io/Hands-On-R-Practice/hsb2.sas7bdat)
+
+
+If you would like to follow the low birth weight logistic regression example from 2016, here are the data:
+
+[SPSS Low Birth Weight](https://clelandcm.github.io/Hands-On-R-Practice/lowbwt.sav)
 
 # Packages to Install
 

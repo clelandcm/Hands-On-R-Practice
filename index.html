@@ -146,7 +146,7 @@ $(document).ready(function () {
 
 <h1 class="title toc-ignore">Hands-On R Practice</h1>
 <h4 class="author"><em>Chuck Cleland</em></h4>
-<h4 class="date"><em>October 25, 2017 08:01:06 AM EDT</em></h4>
+<h4 class="date"><em>October 25, 2017 01:01:59 PM EDT</em></h4>
 
 </div>
 
@@ -178,15 +178,16 @@ $(document).ready(function () {
 </div>
 <div id="download" class="section level1">
 <h1>Download</h1>
-<ul>
+<ol style="list-style-type: decimal">
 <li><a href="https://clelandcm.github.io/Hands-On-R-Practice/table1.txt">Plain Text Table 1</a></li>
 <li><a href="https://clelandcm.github.io/Hands-On-R-Practice/bank.sav">SPSS Bank</a></li>
 <li><a href="https://clelandcm.github.io/Hands-On-R-Practice/nhanes.dta">Stata nhanes</a></li>
 <li><a href="https://clelandcm.github.io/Hands-On-R-Practice/Health.xlsx">MS-Excel Health</a></li>
 <li><a href="https://clelandcm.github.io/Hands-On-R-Practice/Bands.xlsx">MS-Excel Bands</a></li>
 <li><a href="https://clelandcm.github.io/Hands-On-R-Practice/hsb2.sas7bdat">SAS HSB2</a></li>
-<li><a href="https://clelandcm.github.io/Hands-On-R-Practice/lowbwt.sav">SPSS Low Birth Weight</a></li>
-</ul>
+</ol>
+<p>If you would like to follow the low birth weight logistic regression example from 2016, here are the data:</p>
+<p><a href="https://clelandcm.github.io/Hands-On-R-Practice/lowbwt.sav">SPSS Low Birth Weight</a></p>
 </div>
 <div id="packages-to-install" class="section level1">
 <h1>Packages to Install</h1>
@@ -548,71 +549,71 @@ Valiant                       18.1         6  225 105 2.76 3.460</code></pre>
 long_DF<span class="op">$</span>Y &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dv">9</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)
 long_DF</code></pre></div>
 <pre><code>  Subject Time Y
-1       1   BL 5
-2       2   BL 3
-3       3   BL 4
-4       1  FU1 3
+1       1   BL 2
+2       2   BL 1
+3       3   BL 2
+4       1  FU1 4
 5       2  FU1 5
-6       3  FU1 2
-7       1  FU2 1
-8       2  FU2 2
-9       3  FU2 2</code></pre>
+6       3  FU1 5
+7       1  FU2 4
+8       2  FU2 3
+9       3  FU2 5</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">spread</span>(long_DF, <span class="dt">key =</span> Time, <span class="dt">value =</span> Y)</code></pre></div>
 <pre><code>  Subject BL FU1 FU2
-1       1  5   3   1
-2       2  3   5   2
-3       3  4   2   2</code></pre>
+1       1  2   4   4
+2       2  1   5   3
+3       3  2   5   5</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">long_DF &lt;-<span class="st"> </span><span class="kw">expand.grid</span>(<span class="dt">Subject =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="dt">Time =</span> <span class="kw">c</span>(<span class="st">&quot;BL&quot;</span>,<span class="st">&quot;FU1&quot;</span>,<span class="st">&quot;FU2&quot;</span>), <span class="dt">Item =</span> <span class="kw">c</span>(<span class="st">&quot;Y1&quot;</span>,<span class="st">&quot;Y2&quot;</span>))
 long_DF<span class="op">$</span>Response &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dv">18</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)
 long_DF</code></pre></div>
 <pre><code>   Subject Time Item Response
-1        1   BL   Y1        3
-2        2   BL   Y1        1
-3        3   BL   Y1        5
-4        1  FU1   Y1        1
-5        2  FU1   Y1        4
-6        3  FU1   Y1        2
+1        1   BL   Y1        5
+2        2   BL   Y1        4
+3        3   BL   Y1        1
+4        1  FU1   Y1        3
+5        2  FU1   Y1        5
+6        3  FU1   Y1        4
 7        1  FU2   Y1        2
-8        2  FU2   Y1        4
+8        2  FU2   Y1        2
 9        3  FU2   Y1        4
-10       1   BL   Y2        3
+10       1   BL   Y2        1
 11       2   BL   Y2        5
-12       3   BL   Y2        4
-13       1  FU1   Y2        1
-14       2  FU1   Y2        3
+12       3   BL   Y2        2
+13       1  FU1   Y2        3
+14       2  FU1   Y2        4
 15       3  FU1   Y2        1
-16       1  FU2   Y2        2
-17       2  FU2   Y2        2
-18       3  FU2   Y2        3</code></pre>
+16       1  FU2   Y2        1
+17       2  FU2   Y2        3
+18       3  FU2   Y2        5</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">unite</span>(long_DF, Item_Time, Item, Time) <span class="op">%&gt;%</span>
 <span class="kw">spread</span>(<span class="dt">key =</span> Item_Time, <span class="dt">value =</span> Response)</code></pre></div>
 <pre><code>  Subject Y1_BL Y1_FU1 Y1_FU2 Y2_BL Y2_FU1 Y2_FU2
-1       1     3      1      2     3      1      2
-2       2     1      4      4     5      3      2
-3       3     5      2      4     4      1      3</code></pre>
+1       1     5      3      2     1      3      1
+2       2     4      5      2     5      4      3
+3       3     1      4      4     2      1      5</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">long_DF &lt;-<span class="st"> </span><span class="kw">expand.grid</span>(<span class="dt">Subject =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="dt">Time =</span> <span class="kw">c</span>(<span class="st">&quot;BL&quot;</span>,<span class="st">&quot;FU1&quot;</span>,<span class="st">&quot;FU2&quot;</span>))
 long_DF<span class="op">$</span>Y1 &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dv">9</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)
 long_DF<span class="op">$</span>Y2 &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dv">9</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)
 long_DF<span class="op">$</span>Y3 &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dv">9</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)
 long_DF</code></pre></div>
 <pre><code>  Subject Time Y1 Y2 Y3
-1       1   BL  4  5  2
-2       2   BL  5  5  1
-3       3   BL  3  1  1
-4       1  FU1  2  4  3
-5       2  FU1  4  1  1
-6       3  FU1  4  2  3
-7       1  FU2  5  4  5
-8       2  FU2  3  5  1
-9       3  FU2  4  4  3</code></pre>
+1       1   BL  2  2  1
+2       2   BL  3  4  4
+3       3   BL  3  3  4
+4       1  FU1  1  4  3
+5       2  FU1  3  5  5
+6       3  FU1  2  4  4
+7       1  FU2  1  5  3
+8       2  FU2  3  1  5
+9       3  FU2  5  3  5</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">long_DF <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">gather</span>(Variable, Value, Y1, Y2, Y3) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">unite</span>(Variable_Time, Variable, Time) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">spread</span>(Variable_Time, Value)</code></pre></div>
 <pre><code>  Subject Y1_BL Y1_FU1 Y1_FU2 Y2_BL Y2_FU1 Y2_FU2 Y3_BL Y3_FU1 Y3_FU2
-1       1     4      2      5     5      4      4     2      3      5
-2       2     5      4      3     5      1      5     1      1      1
-3       3     3      4      4     1      2      4     1      3      3</code></pre>
+1       1     2      1      1     2      4      5     1      3      3
+2       2     3      3      3     4      5      1     4      5      5
+3       3     3      2      5     3      4      3     4      4      5</code></pre>
 <p>There are other ways to do merging, filtering, variable selection, and reshaping using base R and the data.table package.</p>
 </div>
 </div>
