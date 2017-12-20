@@ -35,7 +35,7 @@ knitr::include_graphics("c:/chuck/NYU/Stat Group/Hands-On-R-Practice/Rlogo.png")
 
 # Six Data Sets to Download
 
-1. [Plain Text Table 1](https://clelandcm.github.io/Hands-On-R-Practice/table1.txt)
+1. [Plain Text Table 1](https://clelandcm.github.io/Hands-On-R-Practice/table1.csv)
 2. [SPSS Bank](https://clelandcm.github.io/Hands-On-R-Practice/bank.sav)
 3. [Stata nhanes](https://clelandcm.github.io/Hands-On-R-Practice/nhanes.dta)
 4. [MS-Excel Health](https://clelandcm.github.io/Hands-On-R-Practice/Health.xlsx)
