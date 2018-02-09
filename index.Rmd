@@ -14,7 +14,7 @@ knitr::opts_chunk$set(echo = TRUE, message=FALSE, warning=FALSE, comment=NA, dpi
 ```
 
 ```{r, echo=FALSE, out.width = "200px"}
-knitr::include_graphics("c:/chuck/NYU/Stat Group/Hands-On-R-Practice/Rlogo.png")
+knitr::include_graphics("Rlogo.png")
 ```
 
 # Install R and then RStudio
@@ -42,12 +42,7 @@ knitr::include_graphics("c:/chuck/NYU/Stat Group/Hands-On-R-Practice/Rlogo.png")
 5. [MS-Excel Bands](https://clelandcm.github.io/Hands-On-R-Practice/Bands.xlsx)
 6. [SAS HSB2](https://clelandcm.github.io/Hands-On-R-Practice/hsb2.sas7bdat)
 
-
-If you would like to follow the low birth weight logistic regression example from 2016, here are the data:
-
-[SPSS Low Birth Weight](https://clelandcm.github.io/Hands-On-R-Practice/lowbwt.sav)
-
-# Seven Packages to Install
+# Eight Packages to Install
 
 1. [openxlsx](https://CRAN.R-project.org/package=openxlsx)
 2. [foreign](https://CRAN.R-project.org/package=foreign)
@@ -56,6 +51,7 @@ If you would like to follow the low birth weight logistic regression example fro
 5. [sas7bdat](https://CRAN.R-project.org/package=sas7bdat)
 6. [descr](https://CRAN.R-project.org/package=descr)
 7. [hflights](https://CRAN.R-project.org/package=hflights)
+8. [knitr](https://CRAN.R-project.org/package=knitr)
 
 # Getting Data Into and Out Of R
 
@@ -64,13 +60,13 @@ If you would like to follow the low birth weight logistic regression example fro
 ### Plain Text
 ```{r, eval = FALSE}
 ?file.show()
-file.show("c:/chuck/NYU/Stat Group/table1.txt")
+file.show("table1.csv")
 ?read.table()
 read.table(file.choose(), sep = ",", header = TRUE)
 ```
 
 ```{r}
-table1 <- read.table("c:/chuck/NYU/Stat Group/table1.txt", sep = ",", header = TRUE)
+table1 <- read.table("table1.csv", sep = ",", header = TRUE)
 
 table1
 ```
@@ -87,8 +83,8 @@ library(openxlsx)
 ```{r}
 args(read.xlsx)
 
-hsiteA <- read.xlsx("c:/chuck/NYU/Stat Group/Hands-On-R-Practice/Health.xlsx", sheet = 1)
-hsiteB <- read.xlsx("c:/chuck/NYU/Stat Group/Hands-On-R-Practice/Health.xlsx", sheet = "Site B", detectDates = TRUE)
+hsiteA <- read.xlsx("Health.xlsx", sheet = 1)
+hsiteB <- read.xlsx("Health.xlsx", sheet = "Site B", detectDates = TRUE)
 
 hsiteA
 hsiteB
@@ -104,7 +100,7 @@ library(foreign)
 ```
 
 ```{r}
-bank <- read.spss("c:/chuck/NYU/Stat Group/bank.sav", to.data.frame = TRUE)
+bank <- read.spss("bank.sav", to.data.frame = TRUE)
 
 head(bank)
 ```
@@ -115,7 +111,7 @@ head(bank)
 ```
 
 ```{r}
-nhanes_dta <- read.dta("c:/chuck/NYU/Stat Group/nhanes.dta")
+nhanes_dta <- read.dta("nhanes.dta")
 
 head(nhanes_dta)
 ```
@@ -130,7 +126,7 @@ library(sas7bdat)
 ```
 
 ```{r}
-hsb2_sas <- read.sas7bdat("c:/chuck/NYU/Stat Group/Hands-On-R-Practice/hsb2.sas7bdat")
+hsb2_sas <- read.sas7bdat("hsb2.sas7bdat")
 
 head(hsb2_sas)
 ```
@@ -147,11 +143,11 @@ head(iris)
 ```
 
 ```{r}
-write.table(iris, file = "c:/chuck/NYU/Stat Group/iris.csv", sep = ",", col.names = TRUE, row.names = FALSE)
+write.table(iris, file = "iris.csv", sep = ",", col.names = TRUE, row.names = FALSE)
 ```
 
 ```{r, eval = FALSE}
-file.show("c:/chuck/NYU/Stat Group/iris.csv")
+file.show("iris.csv")
 ```
 
 ### MS-Excel
@@ -160,7 +156,7 @@ file.show("c:/chuck/NYU/Stat Group/iris.csv")
 ```
 
 ```{r}
-write.xlsx(iris, file = "c:/chuck/NYU/Stat Group/iris.xlsx")
+write.xlsx(iris, file = "iris.xlsx")
 ```
 
 ### SPSS
@@ -169,13 +165,13 @@ write.xlsx(iris, file = "c:/chuck/NYU/Stat Group/iris.xlsx")
 ```
 
 ```{r}
-write.foreign(iris, datafile = "c:/chuck/NYU/Stat Group/iris.dat", 
-                    codefile = "c:/chuck/NYU/Stat Group/iris-read.sps", 
+write.foreign(iris, datafile = "iris.dat", 
+                    codefile = "iris-read.sps", 
                     package = "SPSS")
 ```
 
 ```{r, eval = FALSE}
-file.show("c:/chuck/NYU/Stat Group/iris-read.sps")
+file.show("iris-read.sps")
 ```
 
 ### Stata
@@ -184,7 +180,7 @@ file.show("c:/chuck/NYU/Stat Group/iris-read.sps")
 ```
 
 ```{r}
-write.dta(iris, file = "c:/chuck/NYU/Stat Group/iris.dta", version=10)
+write.dta(iris, file = "iris.dta", version=10)
 ```
 
 # Data Management
@@ -250,11 +246,11 @@ hflights %>%
 ## Merge
 
 ```{r}
-members <- read.xlsx("c:/chuck/NYU/Stat Group/Hands-On-R-Practice/Bands.xlsx", 
+members <- read.xlsx("Bands.xlsx", 
                      sheet = "Members")
 str(members)
 
-instruments <- read.xlsx("c:/chuck/NYU/Stat Group/Hands-On-R-Practice/Bands.xlsx", 
+instruments <- read.xlsx("Bands.xlsx", 
                          sheet = "Instruments")
 str(instruments)
 ```
